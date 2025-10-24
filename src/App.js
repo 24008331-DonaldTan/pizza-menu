@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import Header from "./Header";
+import Pizza from "./Pizza";
+import "./App.css";
 
-function App() {
+const pizzas = [
+  { name: "Margherita", price: 9,  image: "/pizzas/margherita.jpg" },
+  { name: "Pepperoni",  price: 12, image: "/pizzas/pepperoni.jpg" },
+  { name: "Hawaiian",   price: 10, image: "/pizzas/hawaiian.jpg" },
+];
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <Header />
+      <h2>Our best pizzas</h2>
+      <div className="grid">
+        {pizzas.map(p => (
+          <Pizza key={p.name} {...p} />
+        ))}
+      </div>
     </div>
   );
 }
-
-export default App;
